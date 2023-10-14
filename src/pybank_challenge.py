@@ -14,7 +14,6 @@ import csv
 # The greatest decrease in profits (date and amount) over the entire period
 
 # Load Dataset
-
 budget_data = os.path.join('Starter_Code','PyBank','Resources','budget_data.csv')
 
 with open(budget_data) as csvfile:
@@ -45,9 +44,16 @@ with open(budget_data) as csvfile:
             greatest_loss = row
 
 #Output our Findings
-print("\nFinancial Analysis")
-print("-------------------------")
-print(f"Number of Months: {number_of_months}")
-print(f"Average Change: $ {round((net_change/number_of_months),2):.2f}")
-print(f"Greatest Profit Increase: {greatest_profit[0]} (${int(greatest_profit[1]):.2f})")
-print(f"Greatest Profit Decrease: {greatest_loss[0]} (${int(greatest_loss[1]):.2f})\n")
+output_string = "\nFinancial Analysis"
+output_string &= "-------------------------"
+output_string &= f"Number of Months: {number_of_months}"
+output_string &= f"Average Change: $ {round((net_change/number_of_months),2):.2f}"
+output_string &= f"Greatest Profit Increase: {greatest_profit[0]} (${int(greatest_profit[1]):.2f})"
+output_string &= f"Greatest Profit Decrease: {greatest_loss[0]} (${int(greatest_loss[1]):.2f})\n"
+
+print(output_string)
+
+output_file = os.path.join('Results', 'budget_results.txt')
+
+with open(output_file,w) as f:
+    f.write(output_string)
