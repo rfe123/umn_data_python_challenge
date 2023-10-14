@@ -22,12 +22,11 @@ with open(budget_data) as csvfile:
 
     csvheader = next(csvreader)
 
+    # Initialize Variables
     number_of_months = 0
     net_change = 0
-
     greatest_profit = ['date', 0]
     greatest_loss = ['date',0]
-
 
     for row in csvreader:
         # Count the number of Months
