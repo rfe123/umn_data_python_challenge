@@ -18,8 +18,7 @@ budget_data = os.path.join('Starter_Code','PyBank','Resources','budget_data.csv'
 
 with open(budget_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-
-    csvheader = next(csvreader)
+    csvheaders = next(csvreader)
 
     # Initialize Variables
     number_of_months = 0
@@ -27,6 +26,7 @@ with open(budget_data) as csvfile:
     greatest_profit = ['date', 0]
     greatest_loss = ['date',0]
 
+    # Iterate through rows in CSV
     for row in csvreader:
         # Count the number of Months
         number_of_months += 1
@@ -44,16 +44,16 @@ with open(budget_data) as csvfile:
             greatest_loss = row
 
 #Output our Findings
-output_string = "\nFinancial Analysis"
-output_string &= "-------------------------"
-output_string &= f"Number of Months: {number_of_months}"
-output_string &= f"Average Change: $ {round((net_change/number_of_months),2):.2f}"
-output_string &= f"Greatest Profit Increase: {greatest_profit[0]} (${int(greatest_profit[1]):.2f})"
-output_string &= f"Greatest Profit Decrease: {greatest_loss[0]} (${int(greatest_loss[1]):.2f})\n"
+output_string = "Financial Analysis"
+output_string += "\n-------------------------"
+output_string += f"\nNumber of Months: {number_of_months}"
+output_string += f"\n\nAverage Change: $ {round((net_change/number_of_months),2):.2f}"
+output_string += f"\n\nGreatest Profit Increase: {greatest_profit[0]} ($ {int(greatest_profit[1]):.2f})"
+output_string += f"\n\nGreatest Profit Decrease: {greatest_loss[0]} ($ {int(greatest_loss[1]):.2f})"
 
 print(output_string)
 
 output_file = os.path.join('Results', 'budget_results.txt')
 
-with open(output_file,w) as f:
+with open(output_file, 'w') as f:
     f.write(output_string)
