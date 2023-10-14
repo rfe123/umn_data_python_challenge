@@ -21,8 +21,34 @@ with open(budget_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
     csvheader = next(csvreader)
-    print(csvheader)
-    print("-------------------------")
+
+    number_of_months = 0
+    net_change = 0
+
+    greatest_profit = ['date', 0]
+    greatest_loss = ['date',0]
+
 
     for row in csvreader:
-        print(row)
+        # Count the number of Months
+        number_of_months += 1
+        # Grab the quantity from Profit/Loss column
+        change = int(row[1])
+
+        # Accumulate the transactions
+        net_change += change
+    
+        #Store the largest and smallest transactions
+        if change > int(greatest_profit[1]):
+            greatest_profit = row
+        
+        if change < int(greatest_loss[1]):
+            greatest_loss = row
+
+#Output our Findings
+print("\nFinancial Analysis")
+print("-------------------------")
+print(f"Number of Months: {number_of_months}")
+print(f"Average Change: $ {round((net_change/number_of_months),2):.2f}")
+print(f"Greatest Profit Increase: {greatest_profit[0]} (${int(greatest_profit[1]):.2f})")
+print(f"Greatest Profit Decrease: {greatest_loss[0]} (${int(greatest_loss[1]):.2f})\n")
