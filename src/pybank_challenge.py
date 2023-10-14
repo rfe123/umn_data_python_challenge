@@ -37,7 +37,7 @@ with open(budget_data) as csvfile:
         # Accumulate the transactions
         net_change += change
     
-        #Store the largest and smallest transactions
+        #Store the largest gains and losses
         if change > int(greatest_profit[1]):
             greatest_profit = row
         
