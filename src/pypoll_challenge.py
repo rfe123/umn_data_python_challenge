@@ -16,6 +16,31 @@ election_data = os.path.join('Starter_Code','PyPoll','Resources','election_data.
 
 with open(election_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
+    csvheaders = next(csvreader)
+    # print(csvheaders)
+    # ['Ballot ID', 'County', 'Candidate']
+    id = csvheaders.index('Ballot ID')
+    county = csvheaders.index('County')
+    candidate = csvheaders.index('Candidate')
 
-    csvheader = next(csvreader)
-    print(csvheader)
+    # Initialize Variables - ballot counter, and lists for each candidate and # of votes 
+    ballots_count = 0
+    candidates = []
+    count_per_candidate = []
+
+    for row in csvreader:
+        ballots_count += 1
+
+        if row[candidate] in candidates:
+            # If this candidate has votes already, count this one.
+            candidate_id = candidates.index(row[candidate])
+            count_per_candidate[candidate_id] = count_per_candidate[candidate_id]  + 1
+        else:
+            # If this candidate hasn't received votes, add them to the list.
+            candidates.append(row[candidate])
+            count_per_candidate.append(1)
+        
+    header = ['Candidate', 'Total Votes']
+    election_results = zip(candidates, count_per_candidate)
+
+    [print(candidate) for candidate in election_results]
