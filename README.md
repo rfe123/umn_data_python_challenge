@@ -17,15 +17,15 @@ PyBank Instructions
 
 Summary
     
-    To summarize this data, I start by loading it from CSV into a CSV Reader.
-    
-    Iterating through the rows, I count the number of months represented, and add the profit/loss value to the total "net_change".
+To summarize this data, I start by loading it from CSV into a CSV Reader.
 
-    To identify each period change, I subtract the profit/loss result from the previous month's result, and store this change in another totalizer, cumulative_change.
+Iterating through the rows, I count the number of months represented, and add the profit/loss value to the total "net_change".
 
-    If this change is larger than the "greatest_increase" stored so far, replace the greatest_increase, including also the month. If this change is less than the "greatest_decrease", similarly store it for greatest_decrease.
+To identify each period change, I subtract the profit/loss result from the previous month's result, and store this change in another totalizer, cumulative_change.
 
-    Finally, display the results in Terminal and output to file.
+If this change is larger than the "greatest_increase" stored so far, replace the greatest_increase, including also the month. If this change is less than the "greatest_decrease", similarly store it for greatest_decrease.
+
+Finally, display the results in Terminal and output to file.
 
 Result
 
@@ -45,14 +45,14 @@ PyPoll Instructions
 
 Summary
     
-    Start by loading the CSV file, and store the header indices.
+Start by loading the CSV file, and store the header indices.
 
-    Looping through the rows, count the number of ballots cast.
-    If the candidate name has been found, count this vote for that candidate. If not, add the name to the list and count this first vote.
+Looping through the rows, count the number of ballots cast.
+If the candidate name has been found, count this vote for that candidate. If not, add the name to the list and count this first vote.
 
-    Store the percentage of each candidate's vote count compared to the total votes.
+Store the percentage of each candidate's vote count compared to the total votes.
 
-    Print results per the Module Challenge format and output file
+Print results per the Module Challenge format and output file
 
 Result
 
