@@ -44,6 +44,6 @@ Summary
     Looping through the rows, count the number of ballots cast.
     If the candidate name has been found, count this vote for that candidate. If not, add the name to the list and count this first vote.
 
-    Using List Comprehension - store the percentage of each candidate's vote count compared to the total votes.
+    Store the percentage of each candidate's vote count compared to the total votes.
 
     Print results per the Module Challenge format
