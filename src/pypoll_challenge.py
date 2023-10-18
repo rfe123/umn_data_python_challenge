@@ -50,7 +50,7 @@ with open(election_data) as csvfile:
     winning_index = count_per_candidate.index(max(count_per_candidate))
     
     #Zip the results to more easily print
-    print("Election Results")
+    print("\nElection Results")
     print("---------------------")
 
     election_results = zip(candidates, count_per_candidate, percentage)
@@ -58,6 +58,6 @@ with open(election_data) as csvfile:
 
     print("---------------------")
     #Print the name of the winning candidate
-    print(f"The winner is: {candidates[winning_index]}!")
-    print("---------------------")
+    print(f"Winner: {candidates[winning_index]}!")
+    print("---------------------\n")
 
