@@ -19,6 +19,7 @@ with open(election_data) as csvfile:
     csvheaders = next(csvreader)
     # print(csvheaders)
     # ['Ballot ID', 'County', 'Candidate']
+    #store the index of column headers for readability
     id = csvheaders.index('Ballot ID')
     county = csvheaders.index('County')
     candidate = csvheaders.index('Candidate')
@@ -29,18 +30,29 @@ with open(election_data) as csvfile:
     count_per_candidate = []
 
     for row in csvreader:
+        #Count the number of ballots cast
         ballots_count += 1
 
         if row[candidate] in candidates:
-            # If this candidate has votes already, count this one.
+            # If this candidate has votes already, count this one for the candidate.
             candidate_id = candidates.index(row[candidate])
-            count_per_candidate[candidate_id] = count_per_candidate[candidate_id]  + 1
+            count_per_candidate[candidate_id] += 1
         else:
             # If this candidate hasn't received votes, add them to the list.
             candidates.append(row[candidate])
             count_per_candidate.append(1)
         
-    header = ['Candidate', 'Total Votes']
-    election_results = zip(candidates, count_per_candidate)
+    header = ['Candidate', 'Total Votes', 'Percentage of Vote']
 
+    #Calculate the percent for each candidate
+    percentage = [round((x / ballots_count) * 100,2) for x in count_per_candidate]
+
+    #find the index of the largest vote count
+    winning_index = count_per_candidate.index(max(count_per_candidate))
+    
+    #Zip the results to more easily print
+    election_results = zip(candidates, count_per_candidate, percentage)
     [print(candidate) for candidate in election_results]
+
+    #Print the name of the winning candidate
+    print(f"The winner is: {candidates[winning_index]}!")
