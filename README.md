@@ -29,6 +29,8 @@ Summary
 
 Result
 
+![image](https://github.com/rfe123/umn_data_python_challenge/assets/59402267/c894c329-55ac-4dbc-947d-9a41f0f30ab7)
+
 PyPoll Instructions
     
     In this Challenge, you are tasked with helping a small, rural town modernize its vote-counting process.
@@ -51,3 +53,7 @@ Summary
     Store the percentage of each candidate's vote count compared to the total votes.
 
     Print results per the Module Challenge format and output file
+
+Result
+
+![image](https://github.com/rfe123/umn_data_python_challenge/assets/59402267/5a7a7b01-9fd5-4262-9529-df23386c0c38)
