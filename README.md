@@ -46,4 +46,4 @@ Summary
 
     Store the percentage of each candidate's vote count compared to the total votes.
 
-    Print results per the Module Challenge format
+    Print results per the Module Challenge format and output file
