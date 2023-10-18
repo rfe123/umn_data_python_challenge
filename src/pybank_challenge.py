@@ -25,13 +25,12 @@ with open(budget_data) as csvfile:
     # Initialize Variables
     number_of_months = 1
     previous_result = int(first[1])
+    net_change = int(first[1])
+    cumulative_change = 0
 
     # ignore the first month when finding the greatest increase/decrease
     greatest_increase = ['date', 0]
     greatest_decrease = ['date',0]
-
-    net_change = int(first[1])
-    cumulative_change = 0
 
     # Iterate through rows in CSV
     for row in csvreader:
