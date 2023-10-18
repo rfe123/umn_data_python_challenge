@@ -65,8 +65,8 @@ with open(budget_data) as csvfile:
 output_string = "\nFinancial Analysis"
 output_string += "\n-------------------------"
 output_string += f"\nNumber of Months: {number_of_months}"
-output_string += f"\nTotal: ${net_change}"
-output_string += f"\nAverage Change: $ {round((cumulative_change/(number_of_months - 1)),2):.2f}"
+output_string += f"\nTotal: $ {net_change:.2f}"
+output_string += f"\nAverage Change: $ {(cumulative_change/(number_of_months - 1)):.2f}"
 output_string += f"\nGreatest Profit Increase: {greatest_increase[0]} ($ {int(greatest_increase[1]):.2f})"
 output_string += f"\nGreatest Profit Decrease: {greatest_decrease[0]} ($ {int(greatest_decrease[1]):.2f})\n"
 
