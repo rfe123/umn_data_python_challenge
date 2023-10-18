@@ -42,17 +42,22 @@ with open(election_data) as csvfile:
             candidates.append(row[candidate])
             count_per_candidate.append(1)
         
-    header = ['Candidate', 'Total Votes', 'Percentage of Vote']
-
+    
     #Calculate the percent for each candidate
-    percentage = [round((x / ballots_count) * 100,2) for x in count_per_candidate]
+    percentage = [round((x / ballots_count) * 100,3) for x in count_per_candidate]
 
     #find the index of the largest vote count
     winning_index = count_per_candidate.index(max(count_per_candidate))
     
     #Zip the results to more easily print
-    election_results = zip(candidates, count_per_candidate, percentage)
-    [print(candidate) for candidate in election_results]
+    print("Election Results")
+    print("---------------------")
 
+    election_results = zip(candidates, count_per_candidate, percentage)
+    [print(f"{candidate[0]}: {candidate[2]}% ({candidate[1]})") for candidate in election_results]
+
+    print("---------------------")
     #Print the name of the winning candidate
     print(f"The winner is: {candidates[winning_index]}!")
+    print("---------------------")
+
