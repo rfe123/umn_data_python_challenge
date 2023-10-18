@@ -18,38 +18,58 @@ budget_data = os.path.join('Starter_Code','PyBank','Resources','budget_data.csv'
 
 with open(budget_data) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-    csvheaderss = next(csvreader)
+    csvheaders = next(csvreader)
+
+    first = next(csvreader)
 
     # Initialize Variables
-    number_of_months = 0
-    net_change = 0
-    greatest_profit = ['date', 0]
-    greatest_loss = ['date',0]
+    number_of_months = 1
+    previous_result = int(first[1])
+
+    # ignore the first month when finding the greatest increase/decrease
+    greatest_increase = ['date', 0]
+    greatest_decrease = ['date',0]
+
+    net_change = int(first[1])
+    cumulative_change = 0
 
     # Iterate through rows in CSV
     for row in csvreader:
         # Count the number of Months
         number_of_months += 1
         # Grab the quantity from Profit/Loss column
-        change = int(row[1])
+        monthly_result = int(row[1])
+        
+        #Calculate the 
+        change = (monthly_result - previous_result)
 
         # Accumulate the transactions
-        net_change += change
-    
-        #Store the largest gains and losses
-        if change > int(greatest_profit[1]):
-            greatest_profit = row
+        net_change += monthly_result
+
+        # Calculate the total change - from previous result to this month and store
+        cumulative_change += change
+
+        #Keep track of this change to calculate the next cumulative change
+        previous_result = monthly_result
+
+        # Troubleshooting to verify Change logic
+        # print(f"Month: {row[0]} P/L: {row[1]} Previous: {previous_result} Change: {change}")
+
+        #Store the largest increase and decrease to the profit
+        if change > int(greatest_increase[1]):
+            greatest_increase = [row[0],change]
         
-        if change < int(greatest_loss[1]):
-            greatest_loss = row
+        if change < int(greatest_decrease[1]):
+            greatest_decrease = [row[0],change]
 
 #Output our Findings
-output_string = "Financial Analysis"
+output_string = "\nFinancial Analysis"
 output_string += "\n-------------------------"
 output_string += f"\nNumber of Months: {number_of_months}"
-output_string += f"\n\nAverage Change: $ {round((net_change/number_of_months),2):.2f}"
-output_string += f"\n\nGreatest Profit Increase: {greatest_profit[0]} ($ {int(greatest_profit[1]):.2f})"
-output_string += f"\n\nGreatest Profit Decrease: {greatest_loss[0]} ($ {int(greatest_loss[1]):.2f})"
+output_string += f"\nTotal: ${net_change}"
+output_string += f"\nAverage Change: $ {round((cumulative_change/(number_of_months - 1)),2):.2f}"
+output_string += f"\nGreatest Profit Increase: {greatest_increase[0]} ($ {int(greatest_increase[1]):.2f})"
+output_string += f"\nGreatest Profit Decrease: {greatest_decrease[0]} ($ {int(greatest_decrease[1]):.2f})\n"
 
 print(output_string)
 
