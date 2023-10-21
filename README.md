@@ -56,4 +56,5 @@ Print results per the Module Challenge format and output file
 
 Result
 
-![image](https://github.com/rfe123/umn_data_python_challenge/assets/59402267/5a7a7b01-9fd5-4262-9529-df23386c0c38)
+<img width="332" alt="image" src="https://github.com/rfe123/umn_data_python_challenge/assets/59402267/48960983-3ca4-427f-98c5-8581cc013e9d">
+
