@@ -51,8 +51,8 @@ with open(election_data) as csvfile:
     
     #Zip the results to more easily print
     output_string = ("\nElection Results")
-    output_string += ("\n---------------------")
     output_string += f"\nTotal Votes: {ballots_count}"
+    output_string += ("\n---------------------")
     
     election_results = zip(candidates, count_per_candidate, percentage)
     
